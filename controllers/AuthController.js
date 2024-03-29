@@ -27,7 +27,7 @@ const AuthController = {
   },
 
   async profile(req, res) {
-    const user = req.user;
+    const user = req.User;
     res.status(200).json({ user });
   }
 };
