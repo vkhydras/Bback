@@ -3,8 +3,8 @@ const userModel = require('../models/User');
 const AuthController = {
   async register(req, res) {
     try {
-      const { email, password } = req.body;
-      const user = await userModel.create({ email, password });
+      const { accNumber, password, name } = req.body;
+      const user = await userModel.create({ accNumber, password,name });
       res.status(201).json({ message: 'User created successfully', user });
     } catch (error) {
       res.status(500).json({ message: 'Failed to register user', error: error.message });
@@ -13,8 +13,8 @@ const AuthController = {
 
   async login(req, res) {
     try {
-      const { email, password } = req.body;
-      const user = await userModel.findOne({ email });
+      const { accNumber, password } = req.body;
+      const user = await userModel.findOne({ accNumber });
 
       if (!user || user.password !== password) {
         return res.status(401).json({ message: 'Invalid email or password' });
