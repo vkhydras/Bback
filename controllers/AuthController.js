@@ -3,8 +3,8 @@ const userModel = require('../models/User');
 const AuthController = {
   async register(req, res) {
     try {
-      const { accNumber, password, name } = req.body;
-      const user = await userModel.create({ accNumber, password,name });
+      const userData = req.body;
+      const user = await userModel.create({ ...userData });
       res.status(201).json({ message: 'User created successfully', user });
     } catch (error) {
       res.status(500).json({ message: 'Failed to register user', error: error.message });
