@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
-  date: { type: Date, },
+  date: { type: Date },
   description: { type: String, required: true },
   type: { type: String, required: true },
   amount: { type: Number, required: true }
@@ -15,9 +15,14 @@ const userSchema = new mongoose.Schema({
   address: String, 
   membershipSince: { type: Date },
   transactions: [transactionSchema], // Embedding transaction schema
-  mainAccBalance: {type: String} ,
+  mainAccBalance: { type: String },
   savingsBalance: { type: Number, default: 0 }
 });
+
+// Method to validate the password
+userSchema.methods.isValidPassword = function (password) {
+  return this.password === password;
+};
 
 const userModel = mongoose.model('User', userSchema);
 
