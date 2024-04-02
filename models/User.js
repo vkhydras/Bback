@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
-  date: { type: Date },
+  date: { type: String },
   description: { type: String, required: true },
   type: { type: String, required: true },
   amount: { type: Number, required: true }
@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   phone: String, 
   address: String, 
-  membershipSince: { type: Date },
+  membershipSince: { type: String },
   transactions: [transactionSchema], // Embedding transaction schema
   mainAccBalance: { type: String },
   savingsBalance: { type: Number, default: 0 }
