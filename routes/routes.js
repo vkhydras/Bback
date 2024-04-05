@@ -10,9 +10,11 @@ router.get('/profile', AuthController.profile);
 
 // Additional user-related routes
 router.get('/user/:accNumber', UserController.getUserDetails);
-router.get('.getUserDetails/:accNumber/transactions', UserController.getTransactions);
+router.get('/user/:accNumber/transactions', UserController.getTransactions);
+router.post('/user/:accNumber/transactions', UserController.updateTransactions);
 router.post('/user/:accNumber/transfer', UserController.transferFunds);
 router.get('/user/:accNumber/savings', UserController.getSavingsBalance);
 router.post('/user/:accNumber/savings', UserController.updateSavingsBalance);
+router.post('/user/:accNumber', UserController.updateMainAccBalance)
 
 module.exports = router;

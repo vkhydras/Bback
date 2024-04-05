@@ -4,7 +4,8 @@ const transactionSchema = new mongoose.Schema({
   date: { type: String },
   description: { type: String, required: true },
   type: { type: String, required: true },
-  amount: { type: Number, required: true }
+  amount: { type: Number, required: true },
+  status: {type: String}
 });
 
 const userSchema = new mongoose.Schema({
@@ -16,7 +17,8 @@ const userSchema = new mongoose.Schema({
   membershipSince: { type: String },
   transactions: [transactionSchema], // Embedding transaction schema
   mainAccBalance: { type: String },
-  savingsBalance: { type: Number, default: 0 }
+  savingsBalance: { type: Number, default: 0 },
+  email: {type: String}
 });
 
 // Method to validate the password
