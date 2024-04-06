@@ -18,7 +18,8 @@ const userSchema = new mongoose.Schema({
   transactions: [transactionSchema], // Embedding transaction schema
   mainAccBalance: { type: String },
   savingsBalance: { type: Number, default: 0 },
-  email: {type: String}
+  email: {type: String},
+  blocked: {type: Boolean, default: false}
 });
 
 // Method to validate the password
